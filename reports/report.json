@@ -1,0 +1,157 @@
+{
+  "config": {
+    "configFile": "/Users/camiloposada/development/AIDEVELOPMEN/playwrightAutomationFramework/playwright.config.ts",
+    "rootDir": "/Users/camiloposada/development/AIDEVELOPMEN/playwrightAutomationFramework/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": "/Users/camiloposada/development/AIDEVELOPMEN/playwrightAutomationFramework/src/setup/global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "env": "dev",
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "open": "never",
+          "outputFolder": "playwright-report"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "reports/report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Users/camiloposada/development/AIDEVELOPMEN/playwrightAutomationFramework/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "env": "dev",
+          "actualWorkers": 1
+        },
+        "id": "Chromium",
+        "name": "Chromium",
+        "testDir": "/Users/camiloposada/development/AIDEVELOPMEN/playwrightAutomationFramework/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/camiloposada/development/AIDEVELOPMEN/playwrightAutomationFramework/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "env": "dev",
+          "actualWorkers": 1
+        },
+        "id": "Firefox",
+        "name": "Firefox",
+        "testDir": "/Users/camiloposada/development/AIDEVELOPMEN/playwrightAutomationFramework/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/camiloposada/development/AIDEVELOPMEN/playwrightAutomationFramework/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "env": "dev",
+          "actualWorkers": 1
+        },
+        "id": "WebKit",
+        "name": "WebKit",
+        "testDir": "/Users/camiloposada/development/AIDEVELOPMEN/playwrightAutomationFramework/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "3way",
+    "version": "1.54.2",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "functional/rest.spec.ts",
+      "file": "functional/rest.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "@functional REST GET works",
+          "ok": true,
+          "tags": [
+            "functional"
+          ],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Chromium",
+              "projectName": "Chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 385,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-08-12T01:35:25.784Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8c55b43859a4855af836-817e4f56023b626be77b",
+          "file": "functional/rest.spec.ts",
+          "line": 3,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-08-12T01:35:24.782Z",
+    "duration": 1403.441999999981,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
