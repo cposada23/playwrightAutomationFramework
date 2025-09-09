@@ -11,7 +11,7 @@ export function getPostgresPool(env: string): Pool {
   return pool;
 }
 
-export async function runQuery<T = any>(env: string, sql: string, params?: any[]): Promise<QueryResult<T>> {
+export async function runQuery<T extends import("pg").QueryResultRow = any>(env: string, sql: string, params?: any[]): Promise<QueryResult<T>> {
   const p = getPostgresPool(env);
   return p.query<T>(sql, params);
 }

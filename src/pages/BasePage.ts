@@ -6,4 +6,8 @@ export class BasePage {
   async waitForUrl(regex: RegExp) {
     await expect(this.page).toHaveURL(regex);
   }
+
+  async findElement(selector: string) {
+    return this.page.locator(selector);
+  }
 }
