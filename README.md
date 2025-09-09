@@ -254,6 +254,43 @@ test("verify doc", async ({ mongo }) => {
 ### Reporting
 - Reporters: `list`, `html` (to `playwright-report`), `json` (to `reports/report.json`).
 - Slack summary: set `SLACK_WEBHOOK_URL` to enable `src/reporters/slack-reporter.ts`.
+- Slack report upload: set `SLACK_BOT_TOKEN` and `SLACK_CHANNEL_ID` to upload the full HTML report to a channel.
+
+**Slack Integration**
+
+There are two levels of Slack integration:
+
+1.  **Summary Notification (Webhook)**: Posts a simple pass/fail summary to a channel. This is easy to set up and only requires a webhook URL.
+2.  **Full Report Upload (Bot Token)**: Uploads the complete `index.html` report to a channel for detailed analysis. This provides much more insight but requires setting up a Slack App with a bot token.
+
+**Setup for Report Upload**
+
+To enable the full report upload, you need to create a Slack App:
+
+1.  **Create a Slack App**: Go to [api.slack.com/apps](https://api.slack.com/apps) and create a new app in your workspace.
+2.  **Add Permissions**: Navigate to "OAuth & Permissions" and add the `files:write` scope to your Bot Token Scopes.
+3.  **Install the App**: Install the app to your workspace. This will generate a **Bot User OAuth Token** (it starts with `xoxb-`).
+4.  **Find your Bot's Name**: Go to your app's settings, and under **Features > App Home**, you can see and edit your bot's "Display Name". This is the name you will use to interact with it.
+5.  **Invite the Bot to a Channel**: Go to the channel where you want to upload the report, type `/invite @your-bot-name` (using the Display Name from the previous step), and send the message. The bot must be a member of the channel to upload files to it.
+6.  **Get the Channel ID**: To get the channel ID, right-click on the channel name in Slack and select "Copy link". The ID is the part of the URL that starts with `C` (e.g., `C024BE91L`).
+
+**Environment Variables for Slack**
+
+Add the following to your `.env` file to enable Slack reporting:
+
+```bash
+# Enables all Slack reporting features
+SLACK_ENABLED=true
+
+# For summary notification (optional if you only want the report upload)
+SLACK_WEBHOOK_URL="https://hooks.slack.com/services/..."
+
+# For full report upload
+SLACK_BOT_TOKEN="xoxb-your-bot-token"
+SLACK_CHANNEL_ID="C024BE91L"
+```
+
+Then, run your tests. If `SLACK_ENABLED` is `true`, the reporter will be active.
 
 ```bash
 SLACK_WEBHOOK_URL="https://hooks.slack.com/services/..." npm test
@@ -262,7 +299,7 @@ SLACK_WEBHOOK_URL="https://hooks.slack.com/services/..." npm test
 ### CI/CD
 - GitHub Actions workflow in `.github/workflows/playwright.yml`.
 - Installs deps and browsers, runs tests with `ENV=dev`, uploads HTML report.
-- Optional Slack webhook via repository secret `SLACK_WEBHOOK_URL`.
+- Optional Slack webhook via repository secret `SLACK_WEBHOOK_URL`. You can also add `SLACK_ENABLED`, `SLACK_BOT_TOKEN`, and `SLACK_CHANNEL_ID` as secrets to enable the full report upload in your CI pipeline.
 
 ### Extending the Framework
 - Add new pages under `src/pages` and wire them in `page-fixtures`.

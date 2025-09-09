@@ -12,7 +12,7 @@
     "maxFailures": 0,
     "metadata": {
       "env": "dev",
-      "actualWorkers": 4
+      "actualWorkers": 3
     },
     "preserveOutput": "always",
     "reporter": [
@@ -32,6 +32,13 @@
         {
           "outputFile": "reports/report.json"
         }
+      ],
+      [
+        "/Users/camiloposada/code/automation/playwright/playwrightAutomationFramework/src/reporters/slack-reporter.ts",
+        {
+          "webhookUrl": "https://hooks.slack.com/services/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",
+          "channelId": "C09ESE19WSV"
+        }
       ]
     ],
     "reportSlowTests": {
@@ -46,7 +53,7 @@
         "retries": 2,
         "metadata": {
           "env": "dev",
-          "actualWorkers": 4
+          "actualWorkers": 3
         },
         "id": "Chromium",
         "name": "Chromium",
@@ -63,7 +70,7 @@
         "retries": 2,
         "metadata": {
           "env": "dev",
-          "actualWorkers": 4
+          "actualWorkers": 3
         },
         "id": "Firefox",
         "name": "Firefox",
@@ -80,7 +87,7 @@
         "retries": 2,
         "metadata": {
           "env": "dev",
-          "actualWorkers": 4
+          "actualWorkers": 3
         },
         "id": "WebKit",
         "name": "WebKit",
@@ -124,12 +131,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1186,
+                  "duration": 1042,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-09-09T19:57:13.502Z",
+                  "startTime": "2025-09-09T20:52:01.059Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -160,12 +167,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 1450,
+                  "duration": 1197,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-09-09T19:57:13.516Z",
+                  "startTime": "2025-09-09T20:52:01.059Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -196,12 +203,12 @@
                   "workerIndex": 2,
                   "parallelIndex": 2,
                   "status": "passed",
-                  "duration": 3149,
+                  "duration": 2868,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-09-09T19:57:13.517Z",
+                  "startTime": "2025-09-09T20:52:01.066Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -213,231 +220,15 @@
           "file": "smoke/example.spec.ts",
           "line": 16,
           "column": 5
-        },
-        {
-          "title": "@smoke homepage loads and shows header",
-          "ok": true,
-          "tags": [
-            "smoke"
-          ],
-          "tests": [
-            {
-              "timeout": 30000,
-              "annotations": [],
-              "expectedStatus": "passed",
-              "projectId": "Firefox",
-              "projectName": "Firefox",
-              "results": [
-                {
-                  "workerIndex": 3,
-                  "parallelIndex": 3,
-                  "status": "passed",
-                  "duration": 2213,
-                  "errors": [],
-                  "stdout": [],
-                  "stderr": [],
-                  "retry": 0,
-                  "startTime": "2025-09-09T19:57:13.512Z",
-                  "annotations": [],
-                  "attachments": []
-                }
-              ],
-              "status": "expected"
-            }
-          ],
-          "id": "9749890de689b6b7a081-f9d7d89e2fb525551844",
-          "file": "smoke/example.spec.ts",
-          "line": 3,
-          "column": 5
-        },
-        {
-          "title": "@smoke docs page loads and shows header",
-          "ok": true,
-          "tags": [
-            "smoke"
-          ],
-          "tests": [
-            {
-              "timeout": 30000,
-              "annotations": [],
-              "expectedStatus": "passed",
-              "projectId": "Firefox",
-              "projectName": "Firefox",
-              "results": [
-                {
-                  "workerIndex": 4,
-                  "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 2802,
-                  "errors": [],
-                  "stdout": [],
-                  "stderr": [],
-                  "retry": 0,
-                  "startTime": "2025-09-09T19:57:16.347Z",
-                  "annotations": [],
-                  "attachments": []
-                }
-              ],
-              "status": "expected"
-            }
-          ],
-          "id": "9749890de689b6b7a081-828fd2d5d5d6038ff1ea",
-          "file": "smoke/example.spec.ts",
-          "line": 9,
-          "column": 5
-        },
-        {
-          "title": "@smoke docs page search works",
-          "ok": true,
-          "tags": [
-            "smoke"
-          ],
-          "tests": [
-            {
-              "timeout": 30000,
-              "annotations": [],
-              "expectedStatus": "passed",
-              "projectId": "Firefox",
-              "projectName": "Firefox",
-              "results": [
-                {
-                  "workerIndex": 5,
-                  "parallelIndex": 1,
-                  "status": "passed",
-                  "duration": 6064,
-                  "errors": [],
-                  "stdout": [],
-                  "stderr": [],
-                  "retry": 0,
-                  "startTime": "2025-09-09T19:57:16.347Z",
-                  "annotations": [],
-                  "attachments": []
-                }
-              ],
-              "status": "expected"
-            }
-          ],
-          "id": "9749890de689b6b7a081-acb780dd56718c50cccb",
-          "file": "smoke/example.spec.ts",
-          "line": 16,
-          "column": 5
-        },
-        {
-          "title": "@smoke homepage loads and shows header",
-          "ok": true,
-          "tags": [
-            "smoke"
-          ],
-          "tests": [
-            {
-              "timeout": 30000,
-              "annotations": [],
-              "expectedStatus": "passed",
-              "projectId": "WebKit",
-              "projectName": "WebKit",
-              "results": [
-                {
-                  "workerIndex": 6,
-                  "parallelIndex": 2,
-                  "status": "passed",
-                  "duration": 3421,
-                  "errors": [],
-                  "stdout": [],
-                  "stderr": [],
-                  "retry": 0,
-                  "startTime": "2025-09-09T19:57:18.107Z",
-                  "annotations": [],
-                  "attachments": []
-                }
-              ],
-              "status": "expected"
-            }
-          ],
-          "id": "9749890de689b6b7a081-e2614903bb1a20233ace",
-          "file": "smoke/example.spec.ts",
-          "line": 3,
-          "column": 5
-        },
-        {
-          "title": "@smoke docs page loads and shows header",
-          "ok": true,
-          "tags": [
-            "smoke"
-          ],
-          "tests": [
-            {
-              "timeout": 30000,
-              "annotations": [],
-              "expectedStatus": "passed",
-              "projectId": "WebKit",
-              "projectName": "WebKit",
-              "results": [
-                {
-                  "workerIndex": 7,
-                  "parallelIndex": 3,
-                  "status": "passed",
-                  "duration": 1588,
-                  "errors": [],
-                  "stdout": [],
-                  "stderr": [],
-                  "retry": 0,
-                  "startTime": "2025-09-09T19:57:20.927Z",
-                  "annotations": [],
-                  "attachments": []
-                }
-              ],
-              "status": "expected"
-            }
-          ],
-          "id": "9749890de689b6b7a081-00dbd04af0a611ef621f",
-          "file": "smoke/example.spec.ts",
-          "line": 9,
-          "column": 5
-        },
-        {
-          "title": "@smoke docs page search works",
-          "ok": true,
-          "tags": [
-            "smoke"
-          ],
-          "tests": [
-            {
-              "timeout": 30000,
-              "annotations": [],
-              "expectedStatus": "passed",
-              "projectId": "WebKit",
-              "projectName": "WebKit",
-              "results": [
-                {
-                  "workerIndex": 8,
-                  "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 2196,
-                  "errors": [],
-                  "stdout": [],
-                  "stderr": [],
-                  "retry": 0,
-                  "startTime": "2025-09-09T19:57:22.826Z",
-                  "annotations": [],
-                  "attachments": []
-                }
-              ],
-              "status": "expected"
-            }
-          ],
-          "id": "9749890de689b6b7a081-97667e417135a1d95d3d",
-          "file": "smoke/example.spec.ts",
-          "line": 16,
-          "column": 5
         }
       ]
     }
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-09-09T19:57:12.607Z",
-    "duration": 12738.162,
-    "expected": 9,
+    "startTime": "2025-09-09T20:51:59.965Z",
+    "duration": 4808.02,
+    "expected": 3,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0
