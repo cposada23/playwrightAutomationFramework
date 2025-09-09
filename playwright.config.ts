@@ -17,7 +17,7 @@ export default defineConfig({
       ["html", { open: "never", outputFolder: "playwright-report" }],
       ["json", { outputFile: "reports/report.json" }]
     ];
-    if (process.env.SLACK_WEBHOOK_URL) {
+    if (process.env.SLACK_WEBHOOK_URL && process.env.SLACK_ENABLED === "true") {
       reporters.push(["./src/reporters/slack-reporter.ts", { webhookUrl: process.env.SLACK_WEBHOOK_URL }]);
     }
     return reporters;
