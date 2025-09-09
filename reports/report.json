@@ -43,7 +43,7 @@
       {
         "outputDir": "/Users/camiloposada/code/automation/playwright/playwrightAutomationFramework/test-results",
         "repeatEach": 1,
-        "retries": 2,
+        "retries": 0,
         "metadata": {
           "env": "dev",
           "actualWorkers": 1
@@ -60,7 +60,7 @@
       {
         "outputDir": "/Users/camiloposada/code/automation/playwright/playwrightAutomationFramework/test-results",
         "repeatEach": 1,
-        "retries": 2,
+        "retries": 0,
         "metadata": {
           "env": "dev",
           "actualWorkers": 1
@@ -77,7 +77,7 @@
       {
         "outputDir": "/Users/camiloposada/code/automation/playwright/playwrightAutomationFramework/test-results",
         "repeatEach": 1,
-        "retries": 2,
+        "retries": 0,
         "metadata": {
           "env": "dev",
           "actualWorkers": 1
@@ -94,24 +94,23 @@
     ],
     "shard": null,
     "updateSnapshots": "missing",
-    "updateSourceMethod": "patch",
+    "updateSourceMethod": "3way",
     "version": "1.54.2",
-    "workers": 4,
+    "workers": 1,
     "webServer": null
   },
   "suites": [
     {
-      "title": "functional/graphql.spec.ts",
-      "file": "functional/graphql.spec.ts",
+      "title": "db/postgress.spec.ts",
+      "file": "db/postgress.spec.ts",
       "column": 0,
       "line": 0,
       "specs": [
         {
-          "title": "@functional @graphql GraphQL query returns data",
-          "ok": true,
+          "title": "@db postgres SELECT * FROM public.cards returns results",
+          "ok": false,
           "tags": [
-            "functional",
-            "graphql"
+            "db"
           ],
           "tests": [
             {
@@ -122,25 +121,53 @@
               "projectName": "Chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 2,
                   "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 464,
-                  "errors": [],
+                  "status": "failed",
+                  "duration": 9,
+                  "error": {
+                    "message": "AggregateError: ",
+                    "stack": "AggregateError: \n    at /Users/camiloposada/code/automation/playwright/playwrightAutomationFramework/node_modules/pg-pool/index.js:45:11\n    at /Users/camiloposada/code/automation/playwright/playwrightAutomationFramework/tests/db/postgress.spec.ts:7:20",
+                    "location": {
+                      "file": "/Users/camiloposada/code/automation/playwright/playwrightAutomationFramework/tests/db/postgress.spec.ts",
+                      "column": 20,
+                      "line": 7
+                    },
+                    "snippet": "\u001b[0m \u001b[90m  5 |\u001b[39m test(\u001b[32m\"@db postgres SELECT * FROM public.cards returns results\"\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ pg }) \u001b[33m=>\u001b[39m {\n \u001b[90m  6 |\u001b[39m   \u001b[36mtry\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  7 |\u001b[39m     \u001b[36mconst\u001b[39m result \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m pg\u001b[33m.\u001b[39mquery(\u001b[32m\"SELECT * FROM public.cards\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m  8 |\u001b[39m     expect(result\u001b[33m.\u001b[39mrows)\u001b[33m.\u001b[39mtoBeDefined()\u001b[33m;\u001b[39m\n \u001b[90m  9 |\u001b[39m     expect(\u001b[33mArray\u001b[39m\u001b[33m.\u001b[39misArray(result\u001b[33m.\u001b[39mrows))\u001b[33m.\u001b[39mtoBe(\u001b[36mtrue\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 10 |\u001b[39m     expect(result\u001b[33m.\u001b[39mrows\u001b[33m.\u001b[39mlength)\u001b[33m.\u001b[39mtoBeGreaterThan(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/camiloposada/code/automation/playwright/playwrightAutomationFramework/tests/db/postgress.spec.ts",
+                        "column": 20,
+                        "line": 7
+                      },
+                      "message": "AggregateError: \n\n\u001b[0m \u001b[90m  5 |\u001b[39m test(\u001b[32m\"@db postgres SELECT * FROM public.cards returns results\"\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ pg }) \u001b[33m=>\u001b[39m {\n \u001b[90m  6 |\u001b[39m   \u001b[36mtry\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  7 |\u001b[39m     \u001b[36mconst\u001b[39m result \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m pg\u001b[33m.\u001b[39mquery(\u001b[32m\"SELECT * FROM public.cards\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m  8 |\u001b[39m     expect(result\u001b[33m.\u001b[39mrows)\u001b[33m.\u001b[39mtoBeDefined()\u001b[33m;\u001b[39m\n \u001b[90m  9 |\u001b[39m     expect(\u001b[33mArray\u001b[39m\u001b[33m.\u001b[39misArray(result\u001b[33m.\u001b[39mrows))\u001b[33m.\u001b[39mtoBe(\u001b[36mtrue\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 10 |\u001b[39m     expect(result\u001b[33m.\u001b[39mrows\u001b[33m.\u001b[39mlength)\u001b[33m.\u001b[39mtoBeGreaterThan(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at /Users/camiloposada/code/automation/playwright/playwrightAutomationFramework/node_modules/pg-pool/index.js:45:11\u001b[22m\n\u001b[2m    at /Users/camiloposada/code/automation/playwright/playwrightAutomationFramework/tests/db/postgress.spec.ts:7:20\u001b[22m"
+                    }
+                  ],
                   "stdout": [],
-                  "stderr": [],
+                  "stderr": [
+                    {
+                      "text": "Error querying public.cards: AggregateError: \n    at \u001b[90m/Users/camiloposada/code/automation/playwright/playwrightAutomationFramework/\u001b[39mnode_modules/\u001b[4mpg-pool\u001b[24m/index.js:45:11\n\u001b[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)\u001b[39m\n    at \u001b[90m/Users/camiloposada/code/automation/playwright/playwrightAutomationFramework/\u001b[39mtests/db/postgress.spec.ts:7:20\n    at \u001b[90m/Users/camiloposada/code/automation/playwright/playwrightAutomationFramework/\u001b[39mnode_modules/\u001b[4mplaywright\u001b[24m/lib/worker/workerMain.js:304:9\n    at \u001b[90m/Users/camiloposada/code/automation/playwright/playwrightAutomationFramework/\u001b[39mnode_modules/\u001b[4mplaywright\u001b[24m/lib/worker/testInfo.js:289:11\n    at TimeoutManager.withRunnable \u001b[90m(/Users/camiloposada/code/automation/playwright/playwrightAutomationFramework/\u001b[39mnode_modules/\u001b[4mplaywright\u001b[24m/lib/worker/timeoutManager.js:67:14\u001b[90m)\u001b[39m\n    at TestInfoImpl._runWithTimeout \u001b[90m(/Users/camiloposada/code/automation/playwright/playwrightAutomationFramework/\u001b[39mnode_modules/\u001b[4mplaywright\u001b[24m/lib/worker/testInfo.js:287:7\u001b[90m)\u001b[39m\n    at \u001b[90m/Users/camiloposada/code/automation/playwright/playwrightAutomationFramework/\u001b[39mnode_modules/\u001b[4mplaywright\u001b[24m/lib/worker/workerMain.js:302:7\n    at WorkerMain._runTest \u001b[90m(/Users/camiloposada/code/automation/playwright/playwrightAutomationFramework/\u001b[39mnode_modules/\u001b[4mplaywright\u001b[24m/lib/worker/workerMain.js:277:5\u001b[90m)\u001b[39m\n    at WorkerMain.runTestGroup \u001b[90m(/Users/camiloposada/code/automation/playwright/playwrightAutomationFramework/\u001b[39mnode_modules/\u001b[4mplaywright\u001b[24m/lib/worker/workerMain.js:193:11\u001b[90m)\u001b[39m\n    at process.<anonymous> \u001b[90m(/Users/camiloposada/code/automation/playwright/playwrightAutomationFramework/\u001b[39mnode_modules/\u001b[4mplaywright\u001b[24m/lib/common/process.js:65:22\u001b[90m)\u001b[39m {\n  code: \u001b[32m'ECONNREFUSED'\u001b[39m,\n  [errors]: [\n    Error: connect ECONNREFUSED ::1:5432\n    \u001b[90m    at createConnectionError (node:net:1678:14)\u001b[39m\n    \u001b[90m    at afterConnectMultiple (node:net:1708:16)\u001b[39m {\n      errno: \u001b[33m-61\u001b[39m,\n      code: \u001b[32m'ECONNREFUSED'\u001b[39m,\n      syscall: \u001b[32m'connect'\u001b[39m,\n      address: \u001b[32m'::1'\u001b[39m,\n      port: \u001b[33m5432\u001b[39m\n    },\n    Error: connect ECONNREFUSED 127.0.0.1:5432\n    \u001b[90m    at createConnectionError (node:net:1678:14)\u001b[39m\n    \u001b[90m    at afterConnectMultiple (node:net:1708:16)\u001b[39m {\n      errno: \u001b[33m-61\u001b[39m,\n      code: \u001b[32m'ECONNREFUSED'\u001b[39m,\n      syscall: \u001b[32m'connect'\u001b[39m,\n      address: \u001b[32m'127.0.0.1'\u001b[39m,\n      port: \u001b[33m5432\u001b[39m\n    }\n  ]\n}\n"
+                    }
+                  ],
                   "retry": 0,
-                  "startTime": "2025-09-09T17:32:11.945Z",
+                  "startTime": "2025-09-09T18:08:55.263Z",
                   "annotations": [],
-                  "attachments": []
+                  "attachments": [],
+                  "errorLocation": {
+                    "file": "/Users/camiloposada/code/automation/playwright/playwrightAutomationFramework/tests/db/postgress.spec.ts",
+                    "column": 20,
+                    "line": 7
+                  }
                 }
               ],
-              "status": "expected"
+              "status": "unexpected"
             }
           ],
-          "id": "0d133a6c34380a44a3ce-8003e986c7ebd88a1d11",
-          "file": "functional/graphql.spec.ts",
-          "line": 8,
+          "id": "cb2103014e5beccc714e-d7abac61f0f98417cd09",
+          "file": "db/postgress.spec.ts",
+          "line": 5,
           "column": 5
         }
       ]
@@ -148,11 +175,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-09-09T17:32:11.312Z",
-    "duration": 1125.642,
-    "expected": 1,
+    "startTime": "2025-09-09T18:08:54.163Z",
+    "duration": 1125.5439999999944,
+    "expected": 0,
     "skipped": 0,
-    "unexpected": 0,
+    "unexpected": 1,
     "flaky": 0
   }
 }

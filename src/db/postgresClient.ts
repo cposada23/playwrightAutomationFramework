@@ -6,7 +6,7 @@ let pool: Pool | null = null;
 export function getPostgresPool(env: string): Pool {
   if (!pool) {
     const cfg = loadRuntimeConfig(env);
-    pool = new Pool({ connectionString: cfg.postgres.connectionString });
+    pool = new Pool({ connectionString: cfg.postgres.connectionString, ssl: { rejectUnauthorized: false }});
   }
   return pool;
 }
