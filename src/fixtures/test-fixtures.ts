@@ -7,6 +7,7 @@ import { faker } from "@faker-js/faker";
 
 export type Fixtures = {
   rest: RestClient;
+  restAuth: RestClient;
   graphql: GraphQLClient;
   pg: ReturnType<typeof getPostgresPool>;
   mongo: Awaited<ReturnType<typeof getMongoDb>>;
@@ -17,6 +18,13 @@ export const debugTest = base; // Use debugTest.pause() in your tests
 
 export const test = base.extend<Fixtures>({
   rest: async ({}, use) => {
+    const env = process.env.ENV || "dev";
+    const client = new RestClient(env);
+    await client.init();
+    await use(client);
+    await client.dispose();
+  },
+  restAuth: async ({}, use) => {
     const env = process.env.ENV || "dev";
     const client = new RestClient(env);
     await client.init();

@@ -1,6 +1,6 @@
 {
   "app": { "baseURL": "https://playwright.dev" },
-  "api": { "baseURL": "https://httpbin.org" },
+  "api": { "baseURL": "https://api.restful-api.dev" },
   "graphql": { "endpoint": "https://countries.trevorblades.com/" },
   "auth": { "loginEndpoint": "", "username": "", "password": "" },
   "postgres": { "connectionString": "" },

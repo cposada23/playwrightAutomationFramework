@@ -1,6 +1,6 @@
 {
   "app": { "baseURL": "https://staging.example.com" },
-  "api": { "baseURL": "https://api.staging.example.com" },
+  "api": { "baseURL": "https://api.restful-api.dev" },
   "graphql": { "endpoint": "https://gql.staging.example.com/graphql" },
   "auth": { "loginEndpoint": "", "username": "", "password": "" },
   "postgres": { "connectionString": "" },

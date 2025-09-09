@@ -31,6 +31,10 @@ export class RestClient {
     return this.context.delete(url);
   }
 
+  async patch(url: string, data?: any): Promise<APIResponse> {
+    return this.context.patch(url, { data });
+  }
+
   async dispose() {
     await this.context.dispose();
   }

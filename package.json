@@ -9,6 +9,7 @@
     "test": "ENV=dev playwright test",
     "test:db": "ENV=dev playwright test --grep @db --project=Chromium",
     "test:graphql": "ENV=dev playwright test --grep @graphql --project=Chromium",
+    "test:rest": "ENV=dev playwright test --grep @rest --project=Chromium",
     "test:smoke": "ENV=dev playwright test --grep @smoke",
     "test:smoke:headed": "ENV=dev playwright test --grep @smoke --headed --project=Chromium",
     "test:functional": "ENV=dev playwright test --grep @functional",

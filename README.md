@@ -89,6 +89,13 @@ npm run test:smoke
 npm run test:functional
 npm run test:regression
 
+# By specific tag
+npm run test -- --grep @smoke
+npm run test -- --grep @rest
+npm run test -- --grep @graphql
+npm run test -- --grep @db
+
+
 # Different env
 ENV=staging npm test
 ENV=prod npm test
@@ -133,32 +140,99 @@ export class HomePage extends BasePage {
 - REST: `src/api/restClient.ts`
 - GraphQL: `src/api/graphqlClient.ts`
 
+The framework provides powerful fixtures for API testing. You can easily make requests and validate responses against a defined contract using TypeScript types.
+
+**REST API Example**
+
 ```ts
 import { test, expect } from "@/fixtures/test-fixtures";
+import {
+  CreateObjectRequest,
+  CreatedObjectResponse,
+  ObjectByIdResponse,
+  UpdatedObjectResponse
+} from "@/api/types/objects";
+import { faker } from "@faker-js/faker";
 
-test("@functional REST GET works", async ({ rest }) => {
-  const res = await rest.get("/get", { ping: 1 });
-  expect(res.ok()).toBeTruthy();
+// Reusable function to generate test data
+function generateRandomObjectPayload(): CreateObjectRequest {
+  return {
+    name: faker.commerce.productName(),
+    data: {
+      year: faker.number.int({ min: 2015, max: 2025 }),
+      price: parseFloat(faker.commerce.price({ min: 199, max: 3999, dec: 2 })),
+      "CPU model": `${faker.word.noun()} ${faker.commerce.productAdjective()} ${faker.number.int({ min: 1, max: 99 })}`,
+      "Hard disk size": `${faker.number.int({ min: 128, max: 4096 })} GB`
+    }
+  };
+}
+
+test("@functional @rest REST POST creates object and GET by id returns same data", async ({ rest }) => {
+  const payload = generateRandomObjectPayload();
+
+  // POST request
+  const postRes = await rest.post("/objects", payload);
+  expect(postRes.status()).toBe(200);
+  const created: CreatedObjectResponse = await postRes.json();
+
+  // Validate contract and data
+  expect(created.name).toBe(payload.name);
+  expect(created.data).toEqual(payload.data);
+
+  // GET by ID
+  const getRes = await rest.get(`/objects/${created.id}`);
+  expect(getRes.ok()).toBeTruthy();
+  const byId: ObjectByIdResponse = await getRes.json();
+
+  // Validate contract and data
+  expect(byId.id).toBe(created.id);
+  expect(byId.name).toBe(payload.name);
 });
+```
 
-test("@functional GraphQL query", async ({ graphql }) => {
-  const data = await graphql.query<{ countries: { name: string }[] }>(
-    `query { countries { name } }`
-  );
+**GraphQL API Example**
+
+```ts
+import { test, expect } from "@/fixtures/test-fixtures";
+import { COUNTRIES_QUERY } from "@/api/graphql/countriesAPI";
+
+test("@functional @graphql GraphQL query returns data", async ({ graphql }) => {
+  const data = await graphql.query<{ countries: { code: string; name: string }[] }>(COUNTRIES_QUERY);
   expect(data.countries.length).toBeGreaterThan(0);
 });
 ```
 
 ### Database Utilities
 - PostgreSQL: `src/db/postgresClient.ts`
-```ts
-import { test } from "@/fixtures/test-fixtures";
+- MongoDB: `src/db/mongoClient.ts`
 
-test("seed data", async ({ pg }) => {
-  await pg.query("INSERT INTO users(name) VALUES($1)", ["alice"]);
+You can interact with your database to set up preconditions or assert outcomes. The framework supports using types to ensure your queries return the expected data structure.
+
+**PostgreSQL Example**
+
+```ts
+import { test, expect } from "@/fixtures/test-fixtures";
+import { Card } from "@/db/types/card";
+
+test("@db postgres SELECT cards belonging to 'Spanish Vocabulary' deck", async ({ pg }) => {
+  const query = `
+    SELECT c.* 
+    FROM cards c 
+    JOIN decks d ON c."deckId" = d.id 
+    WHERE d.name = 'Spanish Vocabulary'
+  `;
+
+  const result = await pg.query(query);
+  const cards: Card[] = result.rows;
+
+  expect(cards.length).toBeGreaterThan(0);
+  for (const card of cards) {
+    expect(card.deckId).toBeDefined();
+  }
 });
 ```
-- MongoDB: `src/db/mongoClient.ts`
+
+### MongoDB Example
 ```ts
 import { test } from "@/fixtures/test-fixtures";
 
