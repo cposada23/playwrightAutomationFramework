@@ -33,7 +33,12 @@ export const test = base.extend<Fixtures>({
   pg: async ({}, use: (pool: ReturnType<typeof getPostgresPool>) => Promise<void>) => {
     const env = process.env.ENV || "dev";
     const pool = getPostgresPool(env);
-    await use(pool);
+    try {
+      await use(pool);
+    } finally {
+      const { closePool } = await import("@/db/postgresClient");
+      await closePool();
+    }
   },
   mongo: async ({}, use) => {
     const env = process.env.ENV || "dev";
