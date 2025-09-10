@@ -1,9 +1,7 @@
 import { test as base } from "@/fixtures/test-fixtures";
-import { debugTest } from "@/fixtures/test-fixtures";
 import { HomePage } from "@/pages/HomePage";
 import { DocsPage } from "@/pages/DocsPage";
 
-export { debugTest };
 
 export type PageFixtures = {
   homePage: HomePage;

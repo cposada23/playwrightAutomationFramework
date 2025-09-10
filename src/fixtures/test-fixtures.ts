@@ -14,7 +14,6 @@ export type Fixtures = {
   fake: typeof faker;
 };
 
-export const debugTest = base; // Use debugTest.pause() in your tests
 
 export const test = base.extend<Fixtures>({
   rest: async ({}, use) => {

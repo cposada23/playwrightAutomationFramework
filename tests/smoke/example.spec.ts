@@ -1,4 +1,4 @@
-import { test, expect, debugTest} from "@/fixtures/page-fixtures";
+import { test, expect} from "@/fixtures/page-fixtures";
 
 test("@smoke homepage loads and shows header", async ({ homePage }) => {
   await homePage.goto();
